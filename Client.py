@@ -15,9 +15,11 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     # Send the client name and number to the server
     message = f"{client_name},{client_number}"
     s.sendall(message.encode('utf-8'))
+    print("Message sent.")
     
     # Display the server response
     data = s.recv(1024).decode('utf-8')
+    print("Recieved response from server.")
     server_name, server_number = data.split(',')
     server_number = int(server_number)
     

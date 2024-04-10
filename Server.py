@@ -15,6 +15,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 
             # Receive data from the client
             data = conn.recv(1024).decode('utf-8')
+            print("Received data from client")
             client_name, client_number = data.split(',')
             client_number = int(client_number)
 
@@ -27,6 +28,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 # Send server's name and number back to the client
                 response = f"{server_name},{server_number}"
                 conn.sendall(response.encode('utf-8'))
+                print("Sent response.")
             else:
                 print("Received bad integer. Shutting down.")
                 break
